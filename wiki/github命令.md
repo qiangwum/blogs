@@ -1,10 +1,16 @@
-1. 将自己新写的代码备份到其他地方。
-2. 删除本地项目里自己新写的代码。
-3. git pull 下拉代码，使本地代码与远端代码一致。
-4. 重新上传代码 
-  git add .
-  git commit -m "fix bug"
-  git push
+1. #### 将自己新写的代码备份到其他地方。
+
+2. #### 删除本地项目里自己新写的代码。
+
+3. #### git pull 下拉代码，使本地代码与远端代码一致。git pull 本地与服务器端同步
+
+4. #### 重新上传代码 
+
+  ​	git add .
+  ​	git commit -m "fix bug"
+  ​	git push
+
+  ​
 
   git clone git://github.com/schacon/grit.git 从服务器上将代码给拉下来
   git commit -m "This is the message describing the commit" 添加commit信息
