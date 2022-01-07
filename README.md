@@ -1,1 +1,1 @@
-![](https://raw.githubusercontent.com/qiangwum/blog_resource/master/image/demo.png)
+![励志图片.jpg](https://s4.ax1x.com/2022/01/07/79MPun.jpg)
