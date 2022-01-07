@@ -2,13 +2,13 @@
 <https://docs.openstack.org/cinder/xena/admin/blockstorage-image-volume-cache.html>
 
 ### 第一次镜像创建卷流程：
-1.下载镜像从本地到backend.
-2.创建一个空卷.大小通过round_to_num_gran计算64GB.
-3.把镜像拷贝到这个空卷里.
-4.镜像格式转换.
-5.然后后再通过这个卷克隆 iamge-cache卷因为没有指定size.所以大小也是64（此时原卷的status是download）
-6.日志里可以看到对source卷extend to 60，但是算法还是之前的算法，所以仍然是64GiB.
-7.等待image-cache卷创建完成，source 卷status 更新为active，此时两卷都创建成功
+1.下载镜像从本地到backend.  
+2.创建一个空卷.大小通过round_to_num_gran计算64GB.  
+3.把镜像拷贝到这个空卷里.  
+4.镜像格式转换.  
+5.然后后再通过这个卷克隆 iamge-cache卷因为没有指定size.所以大小也是64（此时原卷的status是download）  
+6.日志里可以看到对source卷extend to 60，但是算法还是之前的算法，所以仍然是64GiB.  
+7.等待image-cache卷创建完成，source 卷status 更新为active，此时两卷都创建成功  
 
 * 下面是从日志中抓取的流程
 
