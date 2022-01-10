@@ -6,7 +6,7 @@
 
 名称: Bracket Pair Colorizer 2
 
-名称:TODO HIGHLIGHT
+名称: TODO HIGHLIGHT
 
 * 在插件->找到TODO HIGHLIGHT, 设置->扩展设置->TODO HIGHLIGHT Keywords->在setting.json中编辑,如下：
 

@@ -68,4 +68,4 @@ def round_to_num_gran(size, num=8):
 
 ISSUE:
 1,为什么还要extend volume到real_size，没有实际意义。
-2,Mitaka版本默认不启用镜像盘缓存功能，需要另外配置。所以CEE662的时候没有出现这个问题。
+2,Mitaka版本默认不启用镜像盘缓存功能，需要另外配置。

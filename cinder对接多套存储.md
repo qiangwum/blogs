@@ -1,6 +1,6 @@
 ### openstack对接多套存储
 
-参考如下帖子
+参考如下帖子：
 
 <https://blog.51cto.com/driver2ice/2473970>
 <https://docs.openstack.org/cinder/xena/admin/blockstorage-multi-backend.html>
@@ -23,15 +23,16 @@
 2. 问题
   首先我们启动多个cinder-volume实例，配置不同的storage_availalibility_zone，期望效果是选择虚拟机的AZ时可以匹配Cinder里的AZ，例如：
 
-storage_availability_zone=AZ1
-然而实际情况并不理想，在创建虚拟机时，选择了Nova的AZ（比如AZ1），创建出来的卷却在Cinder的nova可用域里，因为Cinder的默认域是nova，最终结果并没有匹配上。实际上，nova在调用cinder的时候并未把虚拟机实例的availalibility_zone的值传过去。
+  storage_availability_zone=AZ1
+  然而实际情况并不理想，在创建虚拟机时，选择了Nova的AZ（比如AZ1），创建出来的卷却在Cinder的nova可用域里，因为Cinder的默认域是nova，最终结果并没有匹配上。实际上，nova在调用cinder的时候并未把虚拟机实例的availalibility_zone的值传过去。
 
 3. 解决
   查看源码/usr/lib/python2.7/site-packages/nova/conf/cinder.py中的设定，发现一个关键参数cross_az_attach，默认值为True，这意味着虚拟机的磁盘可以跨域绑定。
   代码默认允许跨nova cinder az创建卷，在/nova/conf/cinder.py，如需需要配置需要改default=False，华为云是这么配置的。
+
 ```
    cfg.BoolOpt('cross_az_attach',
                 default=True,
                 help="""
 ```
-Allow attach between instance and volume in different availability zones.
+​	Allow attach between instance and volume in different availability zones.

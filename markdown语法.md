@@ -50,8 +50,8 @@ Markdown 支持有序列表和无序列表。
 接着一个方括号，里面放上图片的替代文字
 接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的 'title' 属性的文字。
 ```
-![QIANG 图标](https://github.com/qiangwum/blogs/blob/main/demo.png)
-![QIANG 图标](https://github.com/qiangwum/blogs/blob/main/demo.png "Qiang")
+![QIANG 图标](https://imgtu.com/i/7SOeoD)
+![QIANG 图标](https://imgtu.com/i/7SOeoD "Qiang")
 ```
 [![7SOeoD.png](https://s4.ax1x.com/2022/01/07/7SOeoD.png)](https://imgtu.com/i/7SOeoD)
 
