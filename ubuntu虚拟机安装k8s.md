@@ -1,12 +1,12 @@
-  # ubuntu  env配置：
+  ### ubuntu  env配置：
   swapoff -a
-  # 永久禁用，打开/etc/fstab注释掉swap那一行。
+  ### 永久禁用，打开/etc/fstab注释掉swap那一行。
   sed -i 's/.*swap.*/#&/' /etc/fstab
-  # 修改内核参数
+  ### 修改内核参数
   systemctl disable ufw
   systemctl stop ufw
 
-  # 修改内核参数
+  ### 修改内核参数
   modprobe br_netfilter
 
   cat <<EOF >  /etc/sysctl.d/k8s.conf
@@ -22,11 +22,11 @@
   sudo tee /etc/apt/sources.list.d/kubernetes.list <<-'EOF'
   deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
   EOF
-  # 刷新软件仓库
+  ### 刷新软件仓库
   sudo apt-get update
-  # 查看可用的版面
+  ### 查看可用的版面
   apt-cache madison kubeadm
-  # 优化docker参数
+  ### 优化docker参数
   mkdir -p /etc/docker
 cat <<EOF >/etc/docker/daemon.json
 {
@@ -47,19 +47,19 @@ EOF
 
   systemctl enable docker 
   systemctl start docker
-  # 安装k8s包，这里安装的是1.22.6版本，可以根据"查看可用版本章节选择其他版本"
+  ### 安装k8s包，这里安装的是1.22.6版本，可以根据"查看可用版本章节选择其他版本"
   apt-get install -y kubelet=1.22.6-00 kubeadm=1.22.6-00 kubectl=1.22.6-00   
   
 
-　# 以上步骤所有master节点和work节点都要执行~
-  # 启动kubelet服务
+　### 以上步骤所有master节点和work节点都要执行~
+  ### 启动kubelet服务
   systemctl enable kubelet && systemctl start kubelet
-  # 查看需要哪些image(可以不做)
+  ### 查看需要哪些image(可以不做)
   kubeadm config images list --kubernetes-version=v1.22.6   
 
   kubeadm init  --image-repository registry.aliyuncs.com/google_containers --kubernetes-version=v1.22.6   --pod-network-cidr=10.244.0.0/16
-　# 安装完成后查看查看node状态是not ready,并且coredns相关pod状态也异常，需要安装网络插件才能正常　
-  # 安装网络插件calico
+　### 安装完成后查看查看node状态是not ready,并且coredns相关pod状态也异常，需要安装网络插件才能正常　
+  ### 安装网络插件calico
   kubectl apply -f https://gitee.com/qiangwum/scripts/raw/master/calico.yaml
   
   
