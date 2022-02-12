@@ -52,15 +52,18 @@ EOF
   ### 安装k8s包，这里安装的是1.22.6版本，可以根据"查看可用版本章节选择其他版本"
   apt-get install -y kubelet=1.22.6-00 kubeadm=1.22.6-00 kubectl=1.22.6-00   
   
-
-　### 以上步骤所有master节点和work节点都要执行~
+- - -
+  
+__以上步骤所有master节点和work节点都要执行~__
+  
   ### 启动kubelet服务
   systemctl enable kubelet && systemctl start kubelet
   ### 查看需要哪些image(可以不做)
   kubeadm config images list --kubernetes-version=v1.22.6   
 
   kubeadm init  --image-repository registry.aliyuncs.com/google_containers --kubernetes-version=v1.22.6   --pod-network-cidr=10.244.0.0/16
-　### 安装完成后查看查看node状态是not ready,并且coredns相关pod状态也异常，需要安装网络插件才能正常　
+　
+  __安装完成后查看查看node状态是not ready,并且coredns相关pod状态也异常，需要安装网络插件才能正常__
   ### 安装网络插件calico
   kubectl apply -f https://gitee.com/qiangwum/scripts/raw/master/calico.yaml
   
