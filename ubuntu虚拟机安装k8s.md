@@ -2,11 +2,14 @@
   ### 关闭swap
   swapoff -a
   ### 永久禁用，打开/etc/fstab注释掉swap那一行。
+  ```
   sed -i 's/.*swap.*/#&/' /etc/fstab
+  ```
   ### 关闭防火墙
+  ```
   systemctl disable ufw
   systemctl stop ufw
-
+  ```
   ### 修改内核参数
   modprobe br_netfilter
 ```
