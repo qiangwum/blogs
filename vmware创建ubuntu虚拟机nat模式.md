@@ -6,10 +6,10 @@
 4. 打开控制面板找到网络连接，打开网络管理器的虚拟机网卡并配置如下：
 　 [![HBmGwT.md.png](https://s4.ax1x.com/2022/02/12/HBmGwT.md.png)](https://imgtu.com/i/HBmGwT)
 5. 开始安装操作系统，依次点击，这里只列举需要修改的地方
-   * 网卡配置
-   　[![HBmX1s.md.png](https://s4.ax1x.com/2022/02/12/HBmX1s.md.png)](https://imgtu.com/i/HBmX1s)
-   * ssh软件包需要勾选
-   　[![HBn33d.md.png](https://s4.ax1x.com/2022/02/12/HBn33d.md.png)](https://imgtu.com/i/HBn33d)
+   网卡配置
+   [![HBmX1s.md.png](https://s4.ax1x.com/2022/02/12/HBmX1s.md.png)](https://imgtu.com/i/HBmX1s)
+   ssh软件包需要勾选
+   [![HBn33d.md.png](https://s4.ax1x.com/2022/02/12/HBn33d.md.png)](https://imgtu.com/i/HBn33d)
  6. 等待安装结束后重启系统进入，测试网络和dns是否生效
  　　[![HBngbV.md.png](https://s4.ax1x.com/2022/02/12/HBngbV.md.png)](https://imgtu.com/i/HBngbV)
  7. 测试与本地PC的连通性，发现并不能通信，此时的情况是，虚拟机可以上外网，并能正常dns,但是不能和宿主机通信，虚拟机不能和VMnet8通信,PC不能和gateway通信，但是可以通VMnet
