@@ -9,26 +9,29 @@
 
   ### 修改内核参数
   modprobe br_netfilter
-
+```
   cat <<EOF >  /etc/sysctl.d/k8s.conf
   net.bridge.bridge-nf-call-ip6tables = 1
   net.bridge.bridge-nf-call-iptables = 1
   EOF
+```
   sysctl --system
 
   sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 
   sudo curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add -
-
+```
   sudo tee /etc/apt/sources.list.d/kubernetes.list <<-'EOF'
   deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
   EOF
+```
   ### 刷新软件仓库
   sudo apt-get update
   ### 查看可用的k8s版面
   apt-cache madison kubeadm
   ### 优化docker参数
   mkdir -p /etc/docker
+```  
 cat <<EOF >/etc/docker/daemon.json
 {
   "exec-opts": ["native.cgroupdriver=systemd"],
@@ -42,6 +45,7 @@ cat <<EOF >/etc/docker/daemon.json
   }
 }
 EOF
+```
   sudo dpkg --configure -a
   apt --fix-broken install -y 
   ### 安装docker
