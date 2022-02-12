@@ -1,8 +1,9 @@
-  ### ubuntu  env配置：
+  ## 依次执行如下步骤：
+  ### 关闭swap
   swapoff -a
   ### 永久禁用，打开/etc/fstab注释掉swap那一行。
   sed -i 's/.*swap.*/#&/' /etc/fstab
-  ### 修改内核参数
+  ### 关闭防火墙
   systemctl disable ufw
   systemctl stop ufw
 
@@ -24,7 +25,7 @@
   EOF
   ### 刷新软件仓库
   sudo apt-get update
-  ### 查看可用的版面
+  ### 查看可用的k8s版面
   apt-cache madison kubeadm
   ### 优化docker参数
   mkdir -p /etc/docker
@@ -43,6 +44,7 @@ cat <<EOF >/etc/docker/daemon.json
 EOF
   sudo dpkg --configure -a
   apt --fix-broken install -y 
+  ### 安装docker
   apt-get install -y docker.io
 
   systemctl enable docker 
