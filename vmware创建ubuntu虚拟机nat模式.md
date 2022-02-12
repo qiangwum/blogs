@@ -1,8 +1,10 @@
 1. 准备工作，下载ubuntu镜像，安装vmware(略)
 2. 虚拟机配置如下图：
-　 [![HBZz2n.png](https://s4.ax1x.com/2022/02/12/HBZz2n.png)](https://imgtu.com/i/HBZz2n)
+
+　[![HBZz2n.png](https://s4.ax1x.com/2022/02/12/HBZz2n.png)](https://imgtu.com/i/HBZz2n)
 3. 打开虚拟机网络管理器配置如下：
-　 [![HBeasP.png](https://s4.ax1x.com/2022/02/12/HBeasP.png)](https://imgtu.com/i/HBeasP)
+
+　[![HBeasP.png](https://s4.ax1x.com/2022/02/12/HBeasP.png)](https://imgtu.com/i/HBeasP)
 4. 打开控制面板找到网络连接，打开网络管理器的虚拟机网卡并配置如下：
 　 [![HBmGwT.md.png](https://s4.ax1x.com/2022/02/12/HBmGwT.md.png)](https://imgtu.com/i/HBmGwT)
 5. 开始安装操作系统，依次点击，这里只列举需要修改的地方
