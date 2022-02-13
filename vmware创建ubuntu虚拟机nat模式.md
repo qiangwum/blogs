@@ -23,5 +23,7 @@
  　　[![HBuRsI.md.png](https://s4.ax1x.com/2022/02/12/HBuRsI.md.png)](https://imgtu.com/i/HBuRsI)
  　　[![HBKNtS.md.png](https://s4.ax1x.com/2022/02/12/HBKNtS.md.png)](https://imgtu.com/i/HBKNtS)
  
- 8. 分析结果就是VMnet出现了问题，查看防火墙等配置，最后重启VMnet8网络后正常通信了．
+ 8. 分析结果就是VMnet出现了问题，查看防火墙等配置，最后重启VMnet8网络后正常通信了.我的电脑每次重启或者熄屏后都要重新启VMnet8网络才能正常．
  　　[![HBM334.png](https://s4.ax1x.com/2022/02/12/HBM334.png)](https://imgtu.com/i/HBM334)
+   
+   > >>> 作者：吴强
