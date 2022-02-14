@@ -11,7 +11,7 @@
 7.等待image-cache卷创建完成，source 卷status 更新为active，此时两卷都创建成功  
 
 * 下面是从日志中抓取的流程
-
+```
 1.cinder.volume.flows.manager.create_volume                 #being created as image with specification
 2.cinder.image.image_utils                                                 #Image download
 3.cinder.volume.drivers.dell_emc.powerflex.rest_client      #Domain ID, Pool ID
@@ -30,6 +30,7 @@
 16.cinder.volume.drivers.dell_emc.powerflex.driver           #Extend volume 362410e4-454e-4dbc-8508-80912fb3b68b to size 60.
 17.cinder.volume.flows.manager.create_volume                #Volume volume-362410e4-454e-4dbc-8508-80912fb3b68b (362410e4-454e-4dbc-8508-80912fb3b68b): created successfully
 18.cinder.volume.manager                                         #Created volume successfully.
+```
 
 ```
 def round_to_num_gran(size, num=8):
@@ -42,12 +43,13 @@ def round_to_num_gran(size, num=8):
 60+8-60%8
 
 第1次克隆卷流程：
+```
 1. cinder.volume.flows.manager.create_volume                  #Volume 301cf2db-f33f-45f0-b081-8698ee90c046: being created as image with specification: {'status': 'creating', 'volume_name': 'volume-301cf2db-f33f-45f0-b081-8698ee90c046', 'volume_size': 60, 'image_id': 'e7aba6b9-7eaf-4ffa-b435-450d80b7a1e9', 'image_location': (None, None), 'image_meta':
 2. cinder.volume.drivers.dell_emc.powerflex.driver            #Clone volume 5322569a-4d2d-4e11-a832-8a3c932711e6 to 301cf2db-f33f-45f0-b081-8698ee90c046.
 3. cinder.volume.drivers.dell_emc.powerflex.driver            #Successfully created volume 301cf2db-f33f-45f0-b081-8698ee90c046 from source 5322569a-4d2d-4e11-a832-8a3c932711e6. PowerFlex volume name: MBzy2/M/RfCwgYaY7pDARg==, id: f02aebf600000009, source name: UyJWmk0tThGoMoo8kycR5g==, source id: f02aebf400000002.
 4. cinder.volume.flows.manager.create_volume                  #Volume volume-301cf2db-f33f-45f0-b081-8698ee90c046 (301cf2db-f33f-45f0-b081-8698ee90c046): created successfully
 5. cinder.volume.manager                                      #Created volume successfully.
-
+```
 ```
         try:
             # Snapshot object does not have 'size' attribute.

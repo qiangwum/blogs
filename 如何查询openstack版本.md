@@ -2,7 +2,8 @@
 
 * 使用如下命令找到相关组件的版本
 
-  ```ceeinfra@lcm1:~> openstack --version
+  ```
+  ceeinfra@lcm1:~> openstack --version
   qiangwum@qiangwum:~> openstack --version
   openstack 5.4.0
   qiangwum@qiangum:~> nova --version
