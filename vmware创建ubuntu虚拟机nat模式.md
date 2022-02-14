@@ -11,10 +11,11 @@
 　 [![HBmGwT.md.png](https://s4.ax1x.com/2022/02/12/HBmGwT.md.png)](https://imgtu.com/i/HBmGwT)
 
 5. 开始安装操作系统，依次点击，这里只列举需要修改的地方
-   * 网卡配置
+   + 网卡配置
+   
    [![HBmX1s.md.png](https://s4.ax1x.com/2022/02/12/HBmX1s.md.png)](https://imgtu.com/i/HBmX1s)
    
-   * ssh软件包需要勾选
+   + ssh软件包需要勾选
    
    [![HBn33d.md.png](https://s4.ax1x.com/2022/02/12/HBn33d.md.png)](https://imgtu.com/i/HBn33d)
  
