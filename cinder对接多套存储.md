@@ -2,11 +2,11 @@
 
 参考如下帖子：
 
-<https://blog.51cto.com/driver2ice/2473970>
-<https://docs.openstack.org/cinder/xena/admin/blockstorage-multi-backend.html>
-<https://www.mirantis.com/blog/the-first-and-final-word-on-openstack-availability-zones/>
+[LINK1](https://blog.51cto.com/driver2ice/2473970)
+[LINK2](https://docs.openstack.org/cinder/xena/admin/blockstorage-multi-backend.html)
+[LINK3](https://www.mirantis.com/blog/the-first-and-final-word-on-openstack-availability-zones/>)
 
-使用volume-type来区分使用的存储，
+==使用volume-type来区分使用的存储==
 
 <!--如果需要分别使用哪些存储，可以添加nova az和cinder az对应的配置,后面用到-->
 
