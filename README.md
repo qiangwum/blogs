@@ -1,4 +1,7 @@
-# Here is stored my blogs
----
-*plz support me,thanks.*
-> 作者：吴强
+<<<<<<< HEAD
+### This my blog page
+
+=======
+# blogs
+## here is my blog
+>>>>>>> fcf85c07886b9ee17fb0f6b4f78b5f2b122b6712

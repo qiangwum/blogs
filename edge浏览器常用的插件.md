@@ -1,3 +1,3 @@
-Switchyomega    #proxy
+Switchyomega
 
-Octotree   #github显示目录
+Octotree
