@@ -86,3 +86,8 @@ __以上步骤所有master节点和work节点都要执行~__
   ![yaml差异](https://github.com/qiangwum/PicGo_img/blob/master/Snipaste_2022-02-16_15-43-20.png?raw=true)
   
   
+  
+  refer:
+  > https://github.com/kubernetes-sigs/metrics-server/
+  > http://blog.ljmict.com/?p=98
+  
