@@ -81,7 +81,8 @@ __以上步骤所有master节点和work节点都要执行~__
   kubectl apply -f https://raw.githubusercontent.com/qiangwum/script/main/metrics-server.yaml
   
   
-  ####官网的yaml文件需要做几处修改，比如image源，证书校验等，上面是我修改过的，经过测试可用
+  #### 官网的yaml文件需要做几处修改，比如image源，证书校验等，上面是我修改过的，经过测试可用
   kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+  ![yaml差异](https://github.com/qiangwum/PicGo_img/blob/master/Snipaste_2022-02-16_15-43-20.png?raw=true)
   
   
