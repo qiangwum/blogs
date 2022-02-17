@@ -1,5 +1,5 @@
 ---
-CKA考试题目类型
+CKA考试题目类型  书签： [K8S](https://kubernetes.io/docs/home/)
 ---
 1. Set configuration context $ kubectl config use-context k8s Monitor the logs of Pod foobar and Extract log lines corresponding to error file-not-found Write them to /opt/KULM00201/foobar
    ```
