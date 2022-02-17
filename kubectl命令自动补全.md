@@ -5,6 +5,7 @@
 4. source <(kubectl completion bash)
 
 
-# 开机执行脚本里
+__永久生效将下面命令放入开机执行脚本里（.bashrc）__
+
 source /usr/share/bash-completion/bash_completion
 source <(kubectl completion bash)
