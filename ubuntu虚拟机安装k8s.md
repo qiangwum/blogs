@@ -88,6 +88,6 @@ __以上步骤所有master节点和work节点都要执行~__
   
   
   refer:
-  > https://github.com/kubernetes-sigs/metrics-server/
-  > http://blog.ljmict.com/?p=98
+  > * https://github.com/kubernetes-sigs/metrics-server/
+  > * http://blog.ljmict.com/?p=98
   
