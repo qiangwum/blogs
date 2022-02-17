@@ -361,6 +361,30 @@ systemctl list-utils-files | grep api-server       没有服务
 待研究
 ```
 ---
+24. 环境搭建
+* 可以参考帖子[k8s安装](https://github.com/qiangwum/blogs/blob/main/ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85k8s.md)
+```
+# master和node上:安装kubeam kubelet kubectl
+
+cat <<EOF > /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+
+sysctl --system
+
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+
+#master初始化
+kubeadm init   --ignore-preflight-errors=xxx
+
+#master安装网络
+kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml
+
+#node加入集群
+```
+---
 24. TLS问题 （一道很长的题目，建议放弃，难度特别大）
 
 
