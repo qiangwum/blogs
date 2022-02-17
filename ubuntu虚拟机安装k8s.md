@@ -76,8 +76,9 @@ __以上步骤所有master节点和work节点都要执行~__
   
   
   
-  至此，安装已经基本完成，但是kubectl top 相关命令不能使用，还需要安装其他插件，还没有解决，待更新~
+  至此，安装已经基本完成，但是kubectl top 相关命令不能使用，如需要使用，
   需要安装metrics-server
+  
   kubectl apply -f https://raw.githubusercontent.com/qiangwum/script/main/metrics-server.yaml
   
   
