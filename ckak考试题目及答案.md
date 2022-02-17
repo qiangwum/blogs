@@ -190,7 +190,7 @@ type: Opaque
 data:
   username: Ym9iCg==
 ```
-**pod
+* pod
 ```
 apiVersion: v1
 kind: Pod
@@ -209,7 +209,7 @@ spec:
     secret:
       secretName: super-secret
 ```
-**envpod
+* envpod
 ```
 apiVersion: v1
 kind: Pod
@@ -227,7 +227,7 @@ spec:
             key: username
   restartPolicy: Never
 ```
-__目的__
+* //验证一下，考试不用
 ```
 root@k8s-master:~# kubectl exec -it pod1 -- bash
 root@pod1:/data# ls
@@ -320,6 +320,7 @@ kubectl get nodes -l name=ek8s-node-1
 kubectl drain wk8s-node-1  
 #当目标node上有daementSet时需要加以下参数，所以建议加上
 #--ignore-daemonsets=true --delete-local-data=true --force=true
+kubectl uncordon k8s-node0*    //恢复命令，考试不用
 ```
 ---
 20. A Kubernetes worker node, labelled with name=wk8s-node-0 is in state NotReady . Investigate why this is the case, and perform any appropriate steps to bring the node to a Ready state, ensuring that any changes are made permanent.
