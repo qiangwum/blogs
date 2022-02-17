@@ -172,6 +172,197 @@ kubectl get svc -n production --show-labels | grep foo
 
 kubectl get pods -l app=foo(label标签)  | grep -v NAME | awk '{print $1}' >> /opt/KUCC00302/kucc00302.txt
 ```
+---
+12. Create a Kubernetes Secret as follows:
+	Name: super-secret
+	Credential: alice  or username:bob 
+Create a Pod named pod-secrets-via-file using the redis image which mounts a secret named super-secret at /secrets
+Create a second Pod named pod-secrets-via-env using the redis image, which exports credential as TOPSECRET
+**secrets
+```
+echo 'bob' | base64
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: super-secret
+type: Opaque
+data:
+  username: Ym9iCg==
+```
+**pod
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+  - name: mypod
+    image: redis
+    volumeMounts:
+    - name: foo
+      mountPath: "/secret"
+      readOnly: true
+  volumes:
+  - name: foo
+    secret:
+      secretName: super-secret
+```
+**envpod
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+spec:
+  containers:
+  - name: mycontainer
+    image: nginx
+    env:
+      - name: ABC
+        valueFrom:
+          secretKeyRef:
+            name: super-secret
+            key: username
+  restartPolicy: Never
+```
+__目的__
+```
+root@k8s-master:~# kubectl exec -it pod1 -- bash
+root@pod1:/data# ls
+root@pod1:/data# cat /secret/username 
+bob
+root@pod1:/data# exit
+exit
+root@k8s-master:~# kubectl exec -it pod2 -- bash 
+root@pod2:/# env | grep ABC
+ABC=bob
+root@pod2:/# 
+```
+---
+13. Create a pod as follows:
+	Name: non-persistent-redis
+	Container image: redis
+	Named-volume with name: cache-control
+	Mount path: /data/redis
+It should launch in the pre-prod namespace and the volume MUST NOT be persistent.
+```
+kubectl create ns pre-prod
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: non-presistent-redis
+  namespace: pre-prod
+spec:
+  containers:
+  - image: redis
+    name: redis
+    volumeMounts:
+    - mountPath: /data/redis
+      name: cache-control
+  volumes:
+  - name: cache-control
+    emptyDir: {}
+```
+---
+14. deploy scale
+```
+kubectl scale deployment nginx-app --replicas=6
+
+```
+---
+15. Check to see how many nodes are ready (not including nodes tainted NoSchedule) and write the number to /opt/nodenum
+```
+kubectl get node | grep -w  Ready | wc -l     //ready 个数
+kubectl describe nodes | grep Taints | grep -i noschedule | wc -l     //noschedule个数 
+```
+---
+16. From the Pod label name=cpu-utilizer, find pods running high CPU workloads and write the name of the Pod consuming most CPU to the file /opt/cpu.txt (which already exists)
+```
+kubectl top pod --sort-by=cpu --namespace kube-system  
+```
+---
+17.  Create a deployment as follows
+	Name: nginx-dns
+	Exposed via a service: nginx-dns
+	Ensure that the service & pod are accessible via their respective DNS records
+	The container(s) within any Pod(s) running as a part of this deployment should use the nginx image
+Next, use the utility nslookup to look up the DNS records of the service & pod and write the output to /opt/service.dns and /opt/pod.dns respectively.
+Ensure you use the busybox:1.28 image(or earlier) for any testing, an the latest release has an unpstream bug which impacts thd use of nslookup.
+```
+kubectl create deployment nginx-dns --image=nginx
+kubectl expose deployment nginx-dns --port=80 --type=NodePort
+root@k8s-master:~# kubectl run busybox -it --rm --image=busybox:1.28 -- sh 
+If you don't see a command prompt, try pressing enter.
+/ # nslookup nginx-dns
+Server:    10.96.0.10
+Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
+
+Name:      nginx-dns
+Address 1: 10.107.102.138 nginx-dns.default.svc.cluster.local
+/ # 
+/ # 
+```
+---
+18. Create a snapshot of the etcd instance running at https://127.0.0.1:2379 saving the snapshot to the file path /data/backup/etcd-snapshot.db
+    The etcd instance is running etcd version 3.1.10
+    The following TLS certificates/key are supplied for connecting to the server with etcdctl
+	CA certificate: /opt/KUCM00302/ca.crt
+	Client certificate: /opt/KUCM00302/etcd-client.crt
+	Clientkey:/opt/KUCM00302/etcd-client.key 
+> ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379  --cacert=ca.pem --cert=server.pem --key=server-key.pem  snapshot save 给的路径
+---
+19. Set the node labelled with name=ek8s-node-1 as unavailable and reschedule all the pods running on it.
+```
+kubectl get nodes -l name=ek8s-node-1
+kubectl drain wk8s-node-1  
+#当目标node上有daementSet时需要加以下参数，所以建议加上
+#--ignore-daemonsets=true --delete-local-data=true --force=true
+```
+---
+20. A Kubernetes worker node, labelled with name=wk8s-node-0 is in state NotReady . Investigate why this is the case, and perform any appropriate steps to bring the node to a Ready state, ensuring that any changes are made permanent.
+```
+kubectl get nodes | grep NotReady
+ssh node  
+systemctl status kubelet
+systemctl start kubelet   
+systemctl enable kubelet
+```
+---
+21. Configure the kubelet systemd managed service, on the node labelled with name=wk8s-node-1, to launch a Pod containing a single container of image nginx named myservice automatically. Any spec files required should be placed in the /etc/kubernetes/manifests directory on the node.
+```
+```
+---
+22.  Determine the node, the failing service and take actions to bring up the failed service and restore the health of the cluster. Ensure that any changes are made permanently.
+The worker node in this cluster is labelled with name=bk8s-node-0
+```
+情形一：kubectl 命令能用 
+kubectl get cs 健康检查  看manager-controller  是否ready   
+如果不ready   systemctl start kube-manager-controller.service   
+情形二：kubectl 命令不能用
+2，ssh登陆到bk8 -master-0上检查服务，如master上的4大服务，
+api-server/schedule/controllor-manager/etcd
+systemctl list-utils-files | grep controller-manager    没有服务
+systemctl list-utils-files | grep api-server       没有服务
+3,此刻进入/etc/kubernetes/manifest  文件夹中，可以看到api-server.yaml  controller-manager.yaml等4个文件，说明这几个服务是以pod方式提供服务的。
+4, systemctl status kubelet     看到是正常启动的，
+说明api-server   controlloer-manager    etcd    schedule  这几个pod 没启动，
+检查静态pod配置,在/var/lib/systemd/system/kubelet.service 这个文件里检查配置看到静态配置路径错误
+考试环境把正确的/etc/kubernetes/manifest  换成了/etc/kubernetes/DODKSIYF 路径，此路径并不存在，把这个错误的路径换成到存放api/controller-manager/etcd/schedule这几个yaml文件存放的路径，重启Kubelet，排错完成。
+再查看node啥的，就OK了
+```
+---
+23. Creae a persistent volume with name app-config of capacity 1Gi and access mode ReadWriteOnce. The type of volume is hostPath and its location is /srv/app-config
+
+```
+待研究
+```
+---
+24. TLS问题 （一道很长的题目，建议放弃，难度特别大）
+
+
 
 
 
