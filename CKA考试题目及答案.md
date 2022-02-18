@@ -55,7 +55,7 @@ CKA考试题目类型  书签： [K8S](https://kubernetes.io/docs/home/)
 ####   Once the spec file has been updated with the init container definition, the Pod should be created.
 ---
 #### 5.  Create a pod named kucc4 with a single container for each of the following images running inside (there may be between 1 and 4 images specified): nginx + redis + memcached + consul
-```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -76,7 +76,7 @@ spec:
 *    Name: nginx-kusc00101
 *    Nmage: nginx
 *    Node selector: disk=ssd
-```
+```yaml
 apiVersion: v1
 	kind: Pod
 	metadata:
@@ -98,7 +98,7 @@ apiVersion: v1
    * the deployment should contain 3 replicas
    * Next, deploy the app with new version 1.13.0-alpine by performing a rolling update and record that update.
    * Finally, rollback that update to the previous version 1.10.2-alpine
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -126,7 +126,7 @@ kubectl rollout undo deployment nginx-app    ///新版本好像没有这个命�
 ```
 ---
 #### 8.  Create and configure the service front-end-service so it’s accessible through NodePort and routes to the existing pod named front-end
-```
+```sh
 kubectl expose pod fron-end --name=front-end-service --port=80  --type=NodePort     //需要先创建pod我不知道考试需要自己创建不，kubectl run fron-end --image=nginx
 ```
 ---
@@ -148,7 +148,7 @@ kubectl run Jenkins --image=jenkins --namespace=website-frontend     //pod name�
 
 - #### When you are done, clean up (delete) any new k8s API objects that you produced during this task 
 
-```
+```yaml
 kubectl run kual00201 --image=redis --labels=app_enb_stage=dev --dry-run=client -oyaml > /opt/KUAL00201/deploy_spec.yaml 
 root@k8s-master:~# cat /opt/KUAL00201/deploy_spec.yaml
 apiVersion: v1
@@ -188,7 +188,7 @@ kubectl get pods -l app=foo(label标签)  | grep -v NAME | awk '{print $1}' >> /
 
 
 * secrets
-```
+```yaml
 root@k8s-master:~# echo 'bob' | base64
 Ym9iCg==
 
@@ -220,7 +220,7 @@ spec:
       secretName: super-secret
 ```
 * envpod
-```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -238,7 +238,7 @@ spec:
   restartPolicy: Never
 ```
 * //验证一下，考试不用
-```
+```sh
 root@k8s-master:~# kubectl exec -it pod1 -- bash
 root@pod1:/data# ls
 root@pod1:/data# cat /secret/username 
@@ -257,7 +257,7 @@ root@pod2:/#
 	Named-volume with name: cache-control
 	Mount path: /data/redis
 	It should launch in the pre-prod namespace and the volume MUST NOT be persistent.
-```
+```yaml
 kubectl create ns pre-prod
 
 apiVersion: v1
@@ -278,19 +278,19 @@ spec:
 ```
 ---
 #### 14. deploy scale
-```
+```sh
 kubectl scale deployment nginx-app --replicas=6
 
 ```
 ---
 #### 15. Check to see how many nodes are ready (not including nodes tainted NoSchedule) and write the number to /opt/nodenum
-```
+```sh
 kubectl get node | grep -w  Ready | wc -l     //ready 个数
 kubectl describe nodes | grep Taints | grep -i noschedule | wc -l     //noschedule个数 
 ```
 ---
 #### 16. From the Pod label name=cpu-utilizer, find pods running high CPU workloads and write the name of the Pod consuming most CPU to the file /opt/cpu.txt (which already exists)
-```
+```sh
 kubectl top pod --sort-by=cpu --namespace kube-system  
 ```
 ---
@@ -307,7 +307,7 @@ kubectl top pod --sort-by=cpu --namespace kube-system
 
 - #### Ensure you use the busybox:1.28 image(or earlier) for any testing, an the latest release has an unpstream bug which impacts thd use of nslookup.
 
-```
+```sh
 kubectl create deployment nginx-dns --image=nginx
 kubectl expose deployment nginx-dns --port=80 --type=NodePort
 root@k8s-master:~# kubectl run busybox -it --rm --image=busybox:1.28 -- sh 
@@ -386,7 +386,7 @@ systemctl list-utils-files | grep api-server       没有服务
 ---
 #### 24. 环境搭建
 * 可以参考帖子[k8s安装](https://github.com/qiangwum/blogs/blob/main/ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85k8s.md)
-```
+```sh
 # master和node上:安装kubeam kubelet kubectl
 
 cat <<EOF > /etc/sysctl.d/k8s.conf
