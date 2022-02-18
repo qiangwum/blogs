@@ -410,7 +410,7 @@ kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml
 ---
 #### 24. TLS问题 （一道很长的题目，建议放弃，难度特别大）
 
-
-
+> [yaml参考](https://github.com/qiangwum/script/blob/main/pod.yaml)
+> 😁
 
 
