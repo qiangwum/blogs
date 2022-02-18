@@ -2,12 +2,20 @@
 CKA考试题目类型  书签： [K8S](https://kubernetes.io/docs/home/)
 ---
 #### 1. Set configuration context $ kubectl config use-context k8s Monitor the logs of Pod foobar and Extract log lines corresponding to error file-not-found Write them to /opt/KULM00201/foobar
+<<<<<<< HEAD:CKA考试题目及答案.md
    ```sh
+=======
+   ```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
      kubectl logs foobar | grep file-not-found > /logs
    ```
 ---
 #### 2. List all PVs sorted by name saving the full kubectl output to /opt/KUCC0010/my_volumes . Use kubectl’s own functionally for sorting the output, and do not manipulate it any further.
+<<<<<<< HEAD:CKA考试题目及答案.md
    ```sh
+=======
+   ```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
      kubectl get pv --all-namespace --sort-by=.metadata.name > /opt/
    ```
 ---
@@ -55,7 +63,11 @@ CKA考试题目类型  书签： [K8S](https://kubernetes.io/docs/home/)
 ####   Once the spec file has been updated with the init container definition, the Pod should be created.
 ---
 #### 5.  Create a pod named kucc4 with a single container for each of the following images running inside (there may be between 1 and 4 images specified): nginx + redis + memcached + consul
+<<<<<<< HEAD:CKA考试题目及答案.md
 ```YAML
+=======
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 apiVersion: v1
 kind: Pod
 metadata:
@@ -76,7 +88,11 @@ spec:
 *    Name: nginx-kusc00101
 *    Nmage: nginx
 *    Node selector: disk=ssd
+<<<<<<< HEAD:CKA考试题目及答案.md
 ```yaml
+=======
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 apiVersion: v1
 	kind: Pod
 	metadata:
@@ -98,7 +114,11 @@ apiVersion: v1
    * the deployment should contain 3 replicas
    * Next, deploy the app with new version 1.13.0-alpine by performing a rolling update and record that update.
    * Finally, rollback that update to the previous version 1.10.2-alpine
+<<<<<<< HEAD:CKA考试题目及答案.md
 ```YAML
+=======
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -126,7 +146,11 @@ kubectl rollout undo deployment nginx-app    ///新版本好像没有这个命�
 ```
 ---
 #### 8.  Create and configure the service front-end-service so it’s accessible through NodePort and routes to the existing pod named front-end
+<<<<<<< HEAD:CKA考试题目及答案.md
 ```SHELL
+=======
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 kubectl expose pod fron-end --name=front-end-service --port=80  --type=NodePort     //需要先创建pod我不知道考试需要自己创建不，kubectl run fron-end --image=nginx
 ```
 ---
@@ -134,7 +158,11 @@ kubectl expose pod fron-end --name=front-end-service --port=80  --type=NodePort 
 *	Name: jenkins
 *	Using image: jenkins
 *	In a new Kubenetes namespace named website-frontend 
+<<<<<<< HEAD:CKA考试题目及答案.md
 ```SHELL
+=======
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 kubectl create ns website-frontend
 kubectl run Jenkins --image=jenkins --namespace=website-frontend     //pod name不能包含大写，不知道是不是题目的问题
 ```
@@ -144,7 +172,11 @@ kubectl run Jenkins --image=jenkins --namespace=website-frontend     //pod name�
 #### Deployment name: kual0020
 #### Save a copy of this spec file to /opt/KUAL00201/deploy_spec.yaml (or .json)
 #### When you are done, clean up (delete) any new k8s API objects that you produced during this task 
+<<<<<<< HEAD:CKA考试题目及答案.md
 ```YAML
+=======
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 kubectl run kual00201 --image=redis --labels=app_enb_stage=dev --dry-run=client -oyaml > /opt/KUAL00201/deploy_spec.yaml 
 root@k8s-master:~# cat /opt/KUAL00201/deploy_spec.yaml
 apiVersion: v1
@@ -167,7 +199,11 @@ root@k8s-master:~#
 ---
 #### 11. Create a file /opt/KUCC00302/kucc00302.txt that lists all pods that implement Service foo in Namespace production.
 #### The format of the file should be one pod name per line
+<<<<<<< HEAD:CKA考试题目及答案.md
 ```SHELL
+=======
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 kubectl get svc -n production --show-labels | grep foo
 
 kubectl get pods -l app=foo(label标签)  | grep -v NAME | awk '{print $1}' >> /opt/KUCC00302/kucc00302.txt
@@ -180,7 +216,11 @@ kubectl get pods -l app=foo(label标签)  | grep -v NAME | awk '{print $1}' >> /
 #### Create a second Pod named pod-secrets-via-env using the redis image, which exports credential as TOPSECRET
 
 * secrets
+<<<<<<< HEAD:CKA考试题目及答案.md
 ```SHELL
+=======
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 root@k8s-master:~# echo 'bob' | base64
 Ym9iCg==
 
@@ -278,7 +318,11 @@ kubectl scale deployment nginx-app --replicas=6
 ```
 ---
 #### 15. Check to see how many nodes are ready (not including nodes tainted NoSchedule) and write the number to /opt/nodenum
+<<<<<<< HEAD:CKA考试题目及答案.md
 ```SHELL
+=======
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 kubectl get node | grep -w  Ready | wc -l     //ready 个数
 kubectl describe nodes | grep Taints | grep -i noschedule | wc -l     //noschedule个数 
 ```
@@ -289,6 +333,7 @@ kubectl top pod --sort-by=cpu --namespace kube-system
 ```
 ---
 #### 17.  Create a deployment as follows
+<<<<<<< HEAD:CKA考试题目及答案.md
 
 * __Name: nginx-dns__
 
@@ -302,6 +347,15 @@ kubectl top pod --sort-by=cpu --namespace kube-system
 
 #### Ensure you use the busybox:1.28 image(or earlier) for any testing, an the latest release has an unpstream bug which impacts thd use of nslookup.
 ```shell
+=======
+#### Name: nginx-dns
+#### Exposed via a service: nginx-dns
+#### Ensure that the service & pod are accessible via their respective DNS records
+#### The container(s) within any Pod(s) running as a part of this deployment should use the nginx image
+#### Next, use the utility nslookup to look up the DNS records of the service & pod and write the output to /opt/service.dns and /opt/pod.dns respectively.
+#### Ensure you use the busybox:1.28 image(or earlier) for any testing, an the latest release has an unpstream bug which impacts thd use of nslookup.
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 kubectl create deployment nginx-dns --image=nginx
 kubectl expose deployment nginx-dns --port=80 --type=NodePort
 root@k8s-master:~# kubectl run busybox -it --rm --image=busybox:1.28 -- sh 
@@ -317,6 +371,7 @@ Address 1: 10.107.102.138 nginx-dns.default.svc.cluster.local
 ```
 ---
 #### 18. Create a snapshot of the etcd instance running at https://127.0.0.1:2379 saving the snapshot to the file path /data/backup/etcd-snapshot.db
+<<<<<<< HEAD:CKA考试题目及答案.md
 * **The etcd instance is running etcd version 3.1.10**
 
 * **The following TLS certificates/key are supplied for connecting to the server with etcdctl**
@@ -326,11 +381,22 @@ Address 1: 10.107.102.138 nginx-dns.default.svc.cluster.local
 * **Client certificate: /opt/KUCM00302/etcd-client.crt**
 
 * **Clientkey:/opt/KUCM00302/etcd-client.key** 
+=======
+#### The etcd instance is running etcd version 3.1.10
+#### The following TLS certificates/key are supplied for connecting to the server with etcdctl
+#### CA certificate: /opt/KUCM00302/ca.crt
+#### Client certificate: /opt/KUCM00302/etcd-client.crt
+#### Clientkey:/opt/KUCM00302/etcd-client.key 
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 
 > ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379  --cacert=ca.pem --cert=server.pem --key=server-key.pem  snapshot save 给的路径
 ---
 #### 19. Set the node labelled with name=ek8s-node-1 as unavailable and reschedule all the pods running on it.
+<<<<<<< HEAD:CKA考试题目及答案.md
 ```sh
+=======
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 kubectl get nodes -l name=ek8s-node-1
 kubectl drain wk8s-node-1  
 #当目标node上有daementSet时需要加以下参数，所以建议加上
@@ -339,7 +405,11 @@ kubectl uncordon k8s-node0*    //恢复命令，考试不用
 ```
 ---
 #### 20. A Kubernetes worker node, labelled with name=wk8s-node-0 is in state NotReady . Investigate why this is the case, and perform any appropriate steps to bring the node to a Ready state, ensuring that any changes are made permanent.
+<<<<<<< HEAD:CKA考试题目及答案.md
 ```sh
+=======
+```
+>>>>>>> 4bd70f15bb87600f007f72cfba0600285efad1a0:ckak考试题目及答案.md
 kubectl get nodes | grep NotReady
 ssh node  
 systemctl status kubelet
