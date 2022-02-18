@@ -2,12 +2,12 @@
 CKA考试题目类型  书签： [K8S](https://kubernetes.io/docs/home/)
 ---
 #### 1. Set configuration context $ kubectl config use-context k8s Monitor the logs of Pod foobar and Extract log lines corresponding to error file-not-found Write them to /opt/KULM00201/foobar
-   ```
+   ```shell
      kubectl logs foobar | grep file-not-found > /logs
    ```
 ---
 #### 2. List all PVs sorted by name saving the full kubectl output to /opt/KUCC0010/my_volumes . Use kubectl’s own functionally for sorting the output, and do not manipulate it any further.
-   ```
+   ```shell
      kubectl get pv --all-namespace --sort-by=.metadata.name > /opt/
    ```
 ---
@@ -78,18 +78,18 @@ spec:
 *    Node selector: disk=ssd
 ```yaml
 apiVersion: v1
-	kind: Pod
-	metadata:
-	  name: nginx
-	  labels:
-		env: test
-	spec:
-	  containers:
-	  - name: nginx
-		  image: nginx
-	  	imagePullPolicy: IfNotPresent
-	  nodeSelector:
-	  	disk: ssd
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    env: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
+  nodeSelector:
+    disktype: ssd  
 ```
 ---
 #### 7.  Create a deployment as follows:
