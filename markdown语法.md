@@ -59,4 +59,7 @@ Markdown 支持有序列表和无序列表。
 链接使用方法如下：
 `[链接名称](链接地址)`
 
-截图工具[xsnip_1.1.0.4.zip](https://github.com/qiangwum/blogs/files/7818733/xsnip_1.1.0.4.zip)
+> 截图工具:[xsnip_1.1.0.4.zip](https://github.com/qiangwum/blogs/files/7818733/xsnip_1.1.0.4.zip)
+
+
+> MarkDown教程:[markdown](https://www.runoob.com/markdown/md-tutorial.html)
