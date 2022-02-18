@@ -2,17 +2,17 @@
   ### 关闭swap
   swapoff -a
   ### 永久禁用，打开/etc/fstab注释掉swap那一行。
-  ```
+  ```sh
   sed -i 's/.*swap.*/#&/' /etc/fstab
   ```
   ### 关闭防火墙
-  ```
+  ```sh
   systemctl disable ufw
   systemctl stop ufw
   ```
   ### 修改内核参数
   modprobe br_netfilter
-```
+```sh
   cat <<EOF >  /etc/sysctl.d/k8s.conf
   net.bridge.bridge-nf-call-ip6tables = 1
   net.bridge.bridge-nf-call-iptables = 1
@@ -23,7 +23,7 @@
   sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 
   sudo curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add -
-```
+```sh
   sudo tee /etc/apt/sources.list.d/kubernetes.list <<-'EOF'
   deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
   EOF
@@ -34,7 +34,7 @@
   apt-cache madison kubeadm
   ### 优化docker参数
   mkdir -p /etc/docker
-```  
+```sh
 cat <<EOF >/etc/docker/daemon.json
 {
   "exec-opts": ["native.cgroupdriver=systemd"],
@@ -61,7 +61,7 @@ EOF
   
 - - -
   
-__以上步骤所有master节点和work节点都要执行~__
+__以上步骤所有master节点和work节点都要执行__
   
   ### 启动kubelet服务
   systemctl enable kubelet && systemctl start kubelet
