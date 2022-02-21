@@ -53,6 +53,7 @@ CKA考试题目类型  书签： [K8S](https://kubernetes.io/docs/home/)
 #### 4. Add an init container to lumpy--koala (Which has been defined in spec file /opt/kucc00100/pod-spec-KUCC00100.yaml)The init container should create an empty file named /workdir/calm.txt
 ####   If /workdir/calm.txt is not detected, the Pod should exit
 ####   Once the spec file has been updated with the init container definition, the Pod should be created.
+
 ---
 #### 5.  Create a pod named kucc4 with a single container for each of the following images running inside (there may be between 1 and 4 images specified): nginx + redis + memcached + consul
 ```yaml
