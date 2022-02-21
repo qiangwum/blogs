@@ -333,10 +333,9 @@ Address 1: 10.107.102.138 nginx-dns.default.svc.cluster.local
 - #### Client certificate: /opt/KUCM00302/etcd-client.crt
 
 - #### Clientkey:/opt/KUCM00302/etcd-client.key 
-
-  
-
-> ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379  --cacert=ca.pem --cert=server.pem --key=server-key.pem  snapshot save 给的路径
+```sh
+ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379  --cacert=ca.pem --cert=server.pem --key=server-key.pem  snapshot save /data/backup/etcd-snapshot.db
+```
 ---
 #### 19. Set the node labelled with name=ek8s-node-1 as unavailable and reschedule all the pods running on it.
 ```
