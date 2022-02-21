@@ -381,8 +381,21 @@ systemctl list-utils-files | grep api-server       没有服务
 ---
 #### 23. Creae a persistent volume with name app-config of capacity 1Gi and access mode ReadWriteOnce. The type of volume is hostPath and its location is /srv/app-config
 
-```
-待研究
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: app-config
+spec
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: slow
+  hostPath:
+    path: /srv/app-config
 ```
 ---
 #### 24. 环境搭建
