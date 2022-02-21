@@ -357,10 +357,7 @@ systemctl enable kubelet
 ```
 ---
 #### 21. Configure the kubelet systemd managed service, on the node labelled with name=wk8s-node-1, to launch a Pod containing a single container of image nginx named myservice automatically. Any spec files required should be placed in the /etc/kubernetes/manifests directory on the node.
-```yaml
-
-
-```
+> [参考blog](https://github.com/qiangwum/blogs/blob/main/%E9%9D%99%E6%80%81pod%E7%9A%84%E5%88%9B%E5%BB%BA.md)
 ---
 #### 22.  Determine the node, the failing service and take actions to bring up the failed service and restore the health of the cluster. Ensure that any changes are made permanently.
 #### The worker node in this cluster is labelled with name=bk8s-node-0
