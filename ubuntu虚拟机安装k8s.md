@@ -1,8 +1,9 @@
   ## 依次执行如下步骤：
   ### 关闭swap
-  swapoff -a
+  
   ### 永久禁用，打开/etc/fstab注释掉swap那一行。
   ```sh
+  swapoff -a
   sed -i 's/.*swap.*/#&/' /etc/fstab
   ```
   ### 关闭防火墙
@@ -13,20 +14,18 @@
   ### 修改内核参数
   modprobe br_netfilter
 ```sh
-  cat <<EOF >  /etc/sysctl.d/k8s.conf
-  net.bridge.bridge-nf-call-ip6tables = 1
-  net.bridge.bridge-nf-call-iptables = 1
-  EOF
-```
-  sysctl --system
-
-  sudo apt-get update && sudo apt-get install -y apt-transport-https curl
-
-  sudo curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add -
+cat <<EOF >  /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
 ```sh
-  sudo tee /etc/apt/sources.list.d/kubernetes.list <<-'EOF'
-  deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
-  EOF
+sysctl --system
+sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+sudo curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add -
+```sh
+sudo tee /etc/apt/sources.list.d/kubernetes.list <<-'EOF'
+deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
+EOF
 ```
   ### 刷新软件仓库
   sudo apt-get update
