@@ -55,6 +55,9 @@ cat <<EOF >/etc/docker/daemon.json
 EOF
 ```
   
+  
+### 使配置生效
+systemctl restart docker
   ### 安装k8s包，这里安装的是1.22.6版本，可以根据"查看可用版本章节选择其他版本"
   apt-get install -y kubelet=1.22.6-00 kubeadm=1.22.6-00 kubectl=1.22.6-00   
   
