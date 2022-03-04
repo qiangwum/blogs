@@ -12,7 +12,7 @@
   systemctl stop ufw
   ```
   ### 修改内核参数
-  modprobe br_netfilter
+`  modprobe br_netfilter`
 ```sh
 cat <<EOF >  /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
@@ -28,16 +28,17 @@ deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
 EOF
 ```
   ### 刷新软件仓库
-  sudo apt-get update
+  `sudo apt-get update`
   ### 查看可用的k8s版面
-  apt-cache madison kubeadm
+  `apt-cache madison kubeadm       //可以不执行`
 
-  sudo dpkg --configure -a
-  apt --fix-broken install -y 
+  `sudo dpkg --configure -a        //可以不执行`
+  
+  `apt --fix-broken install -y     //可以不执行`
   ### 安装docker
-  apt-get install -y docker.io
+  `apt-get install -y docker.io`
 
-  systemctl enable docker;systemctl start docker
+ 
     ### 优化docker参数
 ```sh
 cat <<EOF >/etc/docker/daemon.json
@@ -56,8 +57,8 @@ EOF
 ```
   
   
-### 使配置生效
-systemctl restart docker
+### enable and start 
+`systemctl enable docker;systemctl start docker`
   ### 安装k8s包，这里安装的是1.22.6版本，可以根据"查看可用版本章节选择其他版本"
   apt-get install -y kubelet=1.22.6-00 kubeadm=1.22.6-00 kubectl=1.22.6-00   
   
