@@ -12,4 +12,6 @@ zypper removerepo MyLinuxRepo
 zypper modifyrepo -d Mozillarepo    disable禁用库
 zypper modifyrepo -e Mozillarepo    enable使用库
 zypper refresh Mozillarepo          刷新库
+# 添加本地repo
+zypper ar file:///mnt/ local_repo
 ```
