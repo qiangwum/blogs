@@ -1,3 +1,4 @@
+```
 sudo apt install -y openvswitch-switch uml-utilities dnsmasq 
 
 systemctl start openvswitch-switch.service
@@ -47,3 +48,4 @@ virt-install  --virt-type qemu --name fn-S1 --memory 2048 --vcpus 2 --disk /var/
 
 virt-install --virt-type qemu --name fn-S2 --memory 2048 --vcpus 2 --disk /var/lib/libvirt/qemu/xxxS2.qcow2,format=qcow2,bus=virtio,size=10 --import --os-variant ubuntu20.04 --noautoconsole --network network=br-fn-ovs,mac=52:54:00:d0:be:03,target=tap2
 
+```
