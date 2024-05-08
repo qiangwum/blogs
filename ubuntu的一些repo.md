@@ -1,7 +1,7 @@
-	* 1. 手动更改
+	*1. 手动更改
 	用你熟悉的编辑器打开：/etc/apt/sources.list
 	替换默认的http://archive.ubuntu.com/为http://mirrors.aliyun.com/
-	* 2. ubuntu 20.04 LTS (focal) 配置如下
+	*2. ubuntu 20.04 LTS (focal) 配置如下
 
 ```
 	deb https://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
@@ -19,7 +19,7 @@
 	deb https://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
 	deb-src https://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
 ```
-	* 3. ubuntu 22.04 LTS (jammy) 配置如下
+	*3. ubuntu 22.04 LTS (jammy) 配置如下
 
 ```
 	deb https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
@@ -33,7 +33,7 @@ deb-src https://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted univers
 	deb https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
 deb-src https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
 ```
-	* 4. ubuntu 23.04 (lunar) 配置如下
+	*4. ubuntu 23.04 (lunar) 配置如下
 
 ```
 	deb https://mirrors.aliyun.com/ubuntu/ lunar main restricted universe multiverse
@@ -66,7 +66,7 @@ deb-src https://mirrors.aliyun.com/ubuntu/ noble-updates main restricted univers
 	deb https://mirrors.aliyun.com/ubuntu/ noble-backports main restricted universe multiverse
 deb-src https://mirrors.aliyun.com/ubuntu/ noble-backports main restricted universe multiver
 ```
-	* 6. Ubuntu docker 源和安装
+	*6. Ubuntu docker 源和安装
 
 ```
 	# step 1: 安装必要的一些系统工具
@@ -87,7 +87,7 @@ sudo apt-get -y install docker-ce
 # Step 2: 安装指定版本的Docker-CE: (VERSION例如上面的17.03.1~ce-0~ubuntu-xenial)
 # sudo apt-get -y install docker-ce=[VERSION]
 ```
-	* 7. kubectl 源安装
+	*7. kubectl 源安装
 
 ```
 	apt-get update && apt-get install -y apt-transport-https
