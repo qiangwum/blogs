@@ -1,0 +1,51 @@
+
+1.如果你在Ubuntu安装过程中没有设置主机名，改变它并且主机文件看起来如下，保存设置（ctrl + o，ctrl + x）：
+
+nano /etc/hostname 
+eve-ng 
+nano/etc/hosts                                                
+127.0.0.1 localhost 
+127.0.1.1 eve-ng.example.com eve-ng
+
+2.允许使用root用户的ssh，编辑如下： 
+nano /etc/ssh/sshd_config
+PermitRootLogin prohibit-password
+to
+PermitRootLogin yes
+
+3.设置网卡名称为eth格式，编辑如下： 
+
+sed -i -e 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="net.ifnames=0 noquiet"/' /etc/default/grub
+update-grub
+
+wget -O  -  http://www.eve-ng.net/repo/eczema@ecze.com.gpg.key | sudo apt-key add  - 
+sudo add-apt-repository "deb [arch=amd64]  http://www.eve-ng.net/repo focal main"
+apt-get update
+
+lvcreate --size 8.22G --name eve-lv ubuntu-vg
+
+mkfs.ext4 /dev/mapper/ubuntu--vg-eve--lv
+
+mount /dev/mapper/ubuntu--vg-eve--lv /opt/
+
+DEBIAN_FRONTEND=noninteractive apt-get -y install eve-ng
+
+
+
+4.安装client支持putty 和 shark，官方的公司给禁止了,不好用，用html方式登录console吧。
+https://github.com/SmartFinn/eve-ng-integration?tab=readme-ov-file
+sudo add-apt-repository ppa:smartfinn/eve-ng-integration
+sudo apt-get update
+sudo apt-get install eve-ng-integration
+
+
+
+
+安装过程中的一些问题：
+https://askubuntu.com/questions/104493/errors-were-encountered-while-processing-man-db
+Issue
+Systemctl start mysql
+Systemctl enable mysql
+
+
+
