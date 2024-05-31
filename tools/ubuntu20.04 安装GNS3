@@ -1,0 +1,21 @@
+
+https://docs.gns3.com/docs/getting-started/installation/linux
+
+https://docs.gns3.com/docs/getting-started/installation/remote-server
+
+
+lvcreate --size 8.22G --name gns3-lv ubuntu-vg
+
+mkfs.ext4 /dev/mapper/ubuntu--vg-gns3--lv
+
+mount /dev/mapper/ubuntu--vg-gns3--lv /opt/
+
+curl https://raw.githubusercontent.com/GNS3/gns3-server/master/scripts/remote-install.sh > gns3-remote-install.sh
+bash gns3-remote-install.sh --with-openvpn --with-iou --with-i386-repository
+
+
+root@gns3vm:~# systemctl stop gns3.service
+root@gns3vm:~# systemctl stop gns3server.service
+root@gns3vm:~# systemctl start gns3server.service
+root@gns3vm:~# systemctl status gns3server.service
+
